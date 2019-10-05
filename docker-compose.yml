@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./images/worker/Dockerfile
-    enviroment:
+    environment:
       - DB_HOST=192.168.56.102
       - DB_PORT=5432
     ports:
@@ -25,7 +25,7 @@ services:
     build:
       context: .
       dockerfile: ./images/dashboard/Dockerfile
-    enviroment:
+    environment:
       - DB_HOST=192.168.56.102
       - DB_PORT=5432
     ports:
@@ -43,7 +43,7 @@ services:
     build:
       context: .
       dockerfile: ./images/broker/Dockerfile
-    enviroment:
+    environment:
       - DB_HOST=192.168.56.102
       - DB_PORT=5432
     ports:
@@ -70,7 +70,7 @@ services:
     build:
       context: .
       dockerfile: ./images/integrator/Dockerfile
-    enviroment:
+    environment:
       - DB_HOST=192.168.56.102
       - DB_PORT=5432
     ports:
