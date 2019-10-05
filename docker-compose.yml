@@ -3,7 +3,7 @@ services:
   wso2ei-analytics-worker:
     container_name: wso2ei-analytics-worker
     build:
-      context: .
+      context: ./images/worker
       dockerfile: ./images/worker/Dockerfile
     environment:
       - DB_HOST=192.168.56.102
@@ -23,7 +23,7 @@ services:
   wso2ei-analytics-dashboard:
     container_name: wso2ei-analytics-dashboard
     build:
-      context: .
+      context: ./images/dashboard
       dockerfile: ./images/dashboard/Dockerfile
     environment:
       - DB_HOST=192.168.56.102
@@ -41,7 +41,7 @@ services:
   wso2ei-broker:
     container_name: wso2ei-broker
     build:
-      context: .
+      context: ./images/broker
       dockerfile: ./images/broker/Dockerfile
     environment:
       - DB_HOST=192.168.56.102
@@ -68,7 +68,7 @@ services:
   wso2ei-integrator:
     container_name: wso2ei-integrator
     build:
-      context: .
+      context: ./images/integrator
       dockerfile: ./images/integrator/Dockerfile
     environment:
       - DB_HOST=192.168.56.102
