@@ -1,10 +1,10 @@
+#set base docker image
+FROM wso2/wso2ei-analytics-worker:6.5.0
+
 # set arguments
 ARG WSO2_SERVER_NAME=wso2ei
 ARG WSO2_SERVER_VERSION=6.5.0
 ARG POSTGRESQL_JDBC_VERSION=42.2.8
-
-#set base docker image
-FROM wso2/wso2ei-analytics-worker:${WSO2_SERVER_VERSION}
 
 # calculated/fixed arguments
 ARG USER=wso2carbon
