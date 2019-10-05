@@ -4,7 +4,7 @@ ARG WSO2_SERVER_VERSION=6.5.0
 ARG POSTGRESQL_JDBC_VERSION=42.2.8
 
 #set base docker image
-FROM wso2/wso2ei-broker:${WSO2_SERVER_VERSION}
+FROM wso2/wso2ei-analytics-dashboard${WSO2_SERVER_VERSION}
 
 # calculated/fixed arguments
 ARG USER=wso2carbon
@@ -13,7 +13,7 @@ ARG WSO2_SERVER_HOME=${USER_HOME}/${WSO2_SERVER}
 ARG USER_HOME=/home/${USER}
 
 # add libraries for postgresql jdbc
-ADD --chown=wso2carbon:wso2 https://repo1.maven.org/maven2/org/postgresql/postgresql/${POSTGRESQL_JDBC_VERSION}/postgresql-${POSTGRESQL_JDBC_VERSION}.jar ${WSO2_SERVER_HOME}/dropins/
+ADD --chown=wso2carbon:wso2 https://repo1.maven.org/maven2/org/postgresql/postgresql/${POSTGRESQL_JDBC_VERSION}/postgresql-${POSTGRESQL_JDBC_VERSION}.jar ${WSO2_SERVER_HOME}/wso2/analytics/lib/
 
 # copy custom entrypoint
 COPY --chown=wso2carbon:wso2 docker-entrypoint-postgresql.sh ${USER_HOME}/

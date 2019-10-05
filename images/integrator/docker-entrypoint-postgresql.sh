@@ -11,8 +11,8 @@ test ! -d ${WSO2_SERVER_HOME} && echo "WSO2 Docker product home does not exist" 
 config_volume=${WORKING_DIRECTORY}/wso2-config-volume
 
 # replace environnment variables on configuration files
-sed -i "s#{POSTGRESQL_DB_HOST}#${DB_HOST}#g" ${config_volume}/wso2/broker/conf/datasources/master-datasources.xml
-sed -i "s#{POSTGRESQL_DB_PORT}#${DB_PORT}#g" ${config_volume}/wso2/broker/conf/datasources/master-datasources.xml
+sed -i "s#{POSTGRESQL_DB_HOST}#${DB_HOST}#g" ${config_volume}/conf/datasources/master-datasources.xml
+sed -i "s#{POSTGRESQL_DB_PORT}#${DB_PORT}#g" ${config_volume}/conf/datasources/master-datasources.xml
 
 # call original entrypoint
 ( "/home/wso2carbon/docker-entrypoint.sh" )

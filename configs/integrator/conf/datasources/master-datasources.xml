@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<datasources-configuration xmlns:svns="http://org.wso2.securevault/configuration">
+  <providers>
+    <provider>org.wso2.carbon.ndatasource.rdbms.RDBMSDataSourceReader</provider>
+  </providers>
+  <datasources>
+    <datasource>
+      <name>WSO2_CARBON_DB</name>
+      <description>The datasource used for registry and user manager</description>
+      <jndiConfig>
+        <name>jdbc/WSO2CarbonDB</name>
+      </jndiConfig>
+      <definition type="RDBMS">
+        <configuration>
+          <url>jdbc:postgresql://{POSTGRESQL_DB_HOST}:{POSTGRESQL_DB_PORT}/wso2_carbon_db</url>
+          <username>sssysadmin</username>
+          <password>SS.sysadmin17</password>
+          <driverClassName>org.postgresql.Driver</driverClassName>
+          <maxActive>80</maxActive>
+          <maxWait>60000</maxWait>
+		  <minIdle>5</minIdle>
+          <testOnBorrow>true</testOnBorrow>
+          <validationQuery>SELECT 1; COMMIT</validationQuery>
+          <validationInterval>30000</validationInterval>
+          <defaultAutoCommit>false</defaultAutoCommit>
+        </configuration>
+      </definition>
+    </datasource>
+    <datasource>
+      <name>WSO2_REGISTRY_DB</name>
+      <description>The datasource is used for registry metadata</description>
+      <jndiConfig>
+        <name>jdbc/WSO2_REGISTRY_DB</name>
+      </jndiConfig>
+      <definition type="RDBMS">
+        <configuration>
+          <url>jdbc:postgresql://{POSTGRESQL_DB_HOST}:{POSTGRESQL_DB_PORT}/wso2_registry_db</url>
+          <username>sssysadmin</username>
+          <password>SS.sysadmin17</password>
+          <driverClassName>org.postgresql.Driver</driverClassName>
+          <maxActive>80</maxActive>
+          <maxWait>60000</maxWait>
+		  <minIdle>5</minIdle>
+          <testOnBorrow>true</testOnBorrow>
+          <validationQuery>SELECT 1; COMMIT</validationQuery>
+          <validationInterval>30000</validationInterval>
+          <defaultAutoCommit>false</defaultAutoCommit>
+        </configuration>
+      </definition>
+    </datasource>
+    <datasource>
+      <name>WSO2_USER_DB</name>
+      <description>The datasource is used for user mangement and userstore</description>
+      <jndiConfig>
+        <name>jdbc/WSO2_USER_DB</name>
+      </jndiConfig>
+      <definition type="RDBMS">
+        <configuration>
+          <url>jdbc:postgresql://{POSTGRESQL_DB_HOST}:{POSTGRESQL_DB_PORT}/wso2_user_db</url>
+          <username>sssysadmin</username>
+          <password>SS.sysadmin17</password>
+          <driverClassName>org.postgresql.Driver</driverClassName>
+          <maxActive>80</maxActive>
+          <maxWait>60000</maxWait>
+		  <minIdle>5</minIdle>
+          <testOnBorrow>true</testOnBorrow>
+          <validationQuery>SELECT 1; COMMIT</validationQuery>
+          <validationInterval>30000</validationInterval>
+          <defaultAutoCommit>false</defaultAutoCommit>
+        </configuration>
+      </definition>
+    </datasource>
+  </datasources>
+</datasources-configuration>

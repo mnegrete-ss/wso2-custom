@@ -1,0 +1,92 @@
+version: '3.1'
+services:
+  wso2ei-analytics-worker:
+    container_name: wso2ei-analytics-worker
+    build:
+      context: .
+      dockerfile: ./images/worker/Dockerfile
+    enviroment:
+      - DB_HOST=192.168.56.102
+      - DB_PORT=5432
+    ports:
+      - 9091:9091
+      - 9444:9444
+    #healthcheck:
+    #  test: ["CMD", "nc", "-z","localhost", "9444"]
+    #  interval: 300s
+    #  timeout: 120s
+    #  retries: 10
+    #  start_period: 300s
+    volumes:
+      # mounting configurations
+      - ./configs/worker:/home/wso2carbon/wso2-config-volume
+  wso2ei-analytics-dashboard:
+    container_name: wso2ei-analytics-dashboard
+    build:
+      context: .
+      dockerfile: ./images/dashboard/Dockerfile
+    enviroment:
+      - DB_HOST=192.168.56.102
+      - DB_PORT=5432
+    ports:
+      - 9643:9643
+    #healthcheck:
+    #  test: ["CMD", "nc", "-z","localhost", "9643"]
+    #  interval: 300s
+    #  timeout: 120s
+    #  retries: 5
+    #  start_period: 300s
+    volumes:
+      - ./configs/dashboard:/home/wso2carbon/wso2-config-volume
+  wso2ei-broker:
+    container_name: wso2ei-broker
+    build:
+      context: .
+      dockerfile: ./images/broker/Dockerfile
+    enviroment:
+      - DB_HOST=192.168.56.102
+      - DB_PORT=5432
+    ports:
+      - 9446:9446
+      - 5675:5675
+      - 8675:8675
+      - 1886:1886
+      - 8836:8836
+      - 7614:7614
+    #healthcck:
+    #  test: ["CMD", "nc", "-z","localhost", "9446"]
+    #  interval: 300s
+    #  timeout: 30s
+    #  retries: 10
+    #  start_period: 300s
+    volumes:
+      # mounting configurations
+      - ./configs/broker:/home/wso2carbon/wso2-config-volume
+    depends_on:
+      - wso2ei-analytics-worker
+      - wso2ei-analytics-dashboard
+  wso2ei-integrator:
+    container_name: wso2ei-integrator
+    build:
+      context: .
+      dockerfile: ./images/integrator/Dockerfile
+    enviroment:
+      - DB_HOST=192.168.56.102
+      - DB_PORT=5432
+    ports:
+      - 9443:9443
+      - 8243:8243
+      - 8280:8280
+    #healthcheck:
+    #  test: ["CMD", "nc", "-z","localhost", "9443"]
+    #  interval: 300s
+    #  timeout: 30s
+    #  retries: 10
+    #  start_period: 300s
+    volumes:
+      # mounting configurations
+      - ./configs/integrator:/home/wso2carbon/wso2-config-volume
+    depends_on:
+      - wso2ei-analytics-worker
+      - wso2ei-analytics-dashboard
+      - wso2ei-broker
