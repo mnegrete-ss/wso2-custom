@@ -1,3 +1,6 @@
+#set base docker image
+FROM wso2/wso2ei-broker:${WSO2_SERVER_VERSION}
+
 # set arguments
 ARG WSO2_SERVER_NAME=wso2ei
 ARG WSO2_SERVER_VERSION=6.5.0
@@ -8,9 +11,6 @@ ARG USER=wso2carbon
 ARG WSO2_SERVER=${WSO2_SERVER_NAME}-${WSO2_SERVER_VERSION}
 ARG WSO2_SERVER_HOME=${USER_HOME}/${WSO2_SERVER}
 ARG USER_HOME=/home/${USER}
-
-#set base docker image
-FROM wso2/wso2ei-broker:${WSO2_SERVER_VERSION}
 
 # add libraries for postgresql jdbc
 ADD --chown=wso2carbon:wso2 https://repo1.maven.org/maven2/org/postgresql/postgresql/${POSTGRESQL_JDBC_VERSION}/postgresql-${POSTGRESQL_JDBC_VERSION}.jar ${WSO2_SERVER_HOME}/lib
