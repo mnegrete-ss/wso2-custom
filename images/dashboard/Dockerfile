@@ -4,7 +4,7 @@ ARG WSO2_SERVER_VERSION=6.5.0
 ARG POSTGRESQL_JDBC_VERSION=42.2.8
 
 #set base docker image
-FROM wso2/wso2ei-analytics-dashboard${WSO2_SERVER_VERSION}
+FROM wso2/wso2ei-analytics-dashboard:${WSO2_SERVER_VERSION}
 
 # calculated/fixed arguments
 ARG USER=wso2carbon
