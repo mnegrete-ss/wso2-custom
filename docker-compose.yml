@@ -17,7 +17,7 @@ services:
     #  start_period: 300s
     volumes:
       # mounting configurations
-      - ./configs/worker: /home/wso2carbon/wso2-config-volume
+      - ./configs/worker:/home/wso2carbon/wso2-config-volume
   wso2ei-analytics-dashboard:
     container_name: wso2ei-analytics-dashboard
     build: ./images/dashboard/
@@ -33,7 +33,7 @@ services:
     #  retries: 5
     #  start_period: 300s
     volumes:
-      - ./configs/dashboard: /home/wso2carbon/wso2-config-volume
+      - ./configs/dashboard:/home/wso2carbon/wso2-config-volume
   wso2ei-broker:
     container_name: wso2ei-broker
     build: ./images/broker/
@@ -55,7 +55,7 @@ services:
     #  start_period: 300s
     volumes:
       # mounting configurations
-      - ./configs/broker: /home/wso2carbon/wso2-config-volume
+      - ./configs/broker:/home/wso2carbon/wso2-config-volume
     depends_on:
       - wso2ei-analytics-worker
       - wso2ei-analytics-dashboard
@@ -77,7 +77,7 @@ services:
     #  start_period: 300s
     volumes:
       # mounting configurations
-      - ./configs/integrator: /home/wso2carbon/wso2-config-volume
+      - ./configs/integrator:/home/wso2carbon/wso2-config-volume
     depends_on:
       - wso2ei-analytics-worker
       - wso2ei-analytics-dashboard
