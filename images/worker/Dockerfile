@@ -17,6 +17,7 @@ ADD --chown=wso2carbon:wso2 https://repo1.maven.org/maven2/org/postgresql/postgr
 
 # copy custom entrypoint
 COPY --chown=wso2carbon:wso2 docker-entrypoint-postgresql.sh ${USER_HOME}/
+RUN chmod +x ${USER_HOME}/docker-entrypoint-postgresql.sh
 
 # initiate container and start WSO2 Carbon server
 ENTRYPOINT ["/home/wso2carbon/docker-entrypoint-postgresql.sh"]
