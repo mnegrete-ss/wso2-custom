@@ -17,7 +17,7 @@ USER ${USER_ID}
 WORKDIR ${USER_HOME}
 
 # add libraries for postgresql jdbc
-ADD --chown=wso2carbon:wso2 ../_lib/*.jar ${WSO2_SERVER_HOME}/dropins/
+ADD --chown=wso2carbon:wso2 https://repo1.maven.org/maven2/org/postgresql/postgresql/${POSTGRESQL_JDBC_VERSION}/postgresql-${POSTGRESQL_JDBC_VERSION}.jar ${WSO2_SERVER_HOME}/dropins/
 
 # copy custom entrypoint
 COPY --chown=wso2carbon:wso2 docker-entrypoint-postgresql.sh ${USER_HOME}/
